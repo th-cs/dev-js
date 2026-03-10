@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Aula 01 - JS Intro</title>
+	<style>
+        h1, p {
+            font-family: monospace;
+        }
+	</style>
+</head>
+<body>
+	<main>
+		<h1>Exibindo informações com JS</h1>
+		<p id="name"></p>
+		<p id="age"></p>
+		<p id="addition"></p>
+	</main>
+
+	<script>
+		let name = "Thiago";
+		let age = 24;
+		let addition = 7 + 3;
+
+		// Print on page
+		document.getElementById("name").textContent = `Nome: ${name}`;
+		document.getElementById("age").textContent = `Idade: ${age}`;
+		document.getElementById("addition").textContent = `Soma de 7 + 3: ${addition}`;
+
+		// Print on console
+		console.log(`Nome: ${name}\nIdade: ${age}\nSoma de 7 + 3: ${addition}`);
+	</script>
+</body>
+</html>
