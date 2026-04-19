@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Aula 05 - Laços de repetição</title>
+	<style>
+		body {
+			padding: 20px;
+		}
+
+		h1, h2, p {
+			font-family: monospace;
+		}
+
+		main {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+		}
+
+		section {
+			padding: 12px;
+			width: fit-content;
+			border-radius: 10px;
+			border: 1px dashed #2A3953;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Iterações com Loops</h1>
+	</header>
+	<main>
+		<section>
+			<h2>Loop FOR - Contagem de 1 a 10</h2>
+			<div id="for-wrapper">
+
+			</div>
+		</section>
+		<section>
+			<h2>Loop WHILE - Pares entre 2 e 20</h2>
+			<div id="while-wrapper">
+
+			</div>
+		</section>
+	</main>
+
+	<script>
+		const forWrapperDiv = document.getElementById("for-wrapper");
+		const whileWrapperDiv = document.getElementById("while-wrapper");
+
+		for (let i = 1; i <= 10; i++) {
+			const countElement = document.createElement("p");
+
+			countElement.textContent = `Contando: ${i}`;
+			forWrapperDiv.append(countElement);
+
+			console.log(`Contando (Loop FOR): ${i}`);
+		}
+
+		let k = 2;
+
+		while (k <= 20) {
+			const count = document.createElement("p");
+
+			count.textContent = `Contando: ${k}`;
+			whileWrapperDiv.append(count);
+
+			console.log(`Contando (Loop WHILE): ${k}`);
+			k += 2;
+		}
+
+		const password = "1234";
+		let passwordInput;
+
+		do {
+			passwordInput = String(prompt("Olá, digite a senha: "));
+			if (passwordInput !== password) {
+				alert("Essa não é a senha correta! Dica: "
+					+ `${Number(password) * 2} / 2`);
+			}
+		} while (passwordInput !== password);
+	</script>
+</body>
+</html>
