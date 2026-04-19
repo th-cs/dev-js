@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Aula 06 - Funções</title>
+	<style>
+		body {
+			padding: 20px;
+		}
+
+		h1, h2, p, label, input {
+			font-family: monospace;
+		}
+
+		main {
+			display: flex;
+			flex-direction: column;
+			gap: 14px;
+		}
+
+		section {
+			display: flex;
+			flex-direction: column;
+			align-items: flex-start;
+			padding: 12px;
+			gap: 10px;
+			width: 30%;
+			border-radius: 10px;
+			border: 1px dashed #304167;
+		}
+
+		input {
+			padding: 10px;
+			border-radius: 10px;
+			border: 1px solid #989898;
+		}
+
+		button {
+			padding: 8px 14px;
+			color: #FFFFFF;
+			background-color: #3463BC;
+			border-radius: 10px;
+			border: none;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: #1f3e7c;
+		}
+
+		p {
+			font-size: 14px;
+			font-weight: 400;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Tipos de funções em JS</h1>
+	</header>
+	<main>
+		<section>
+			<h2>Função tradicional - Saudações</h2>
+			<label for="name">Qual é o seu nome? </label>
+			<input
+				id="name"
+				type="text">
+			<label for="age">Qual é a sua idade? </label>
+			<input
+				id="age"
+				type="number">
+			<button
+				id="hi-btn"
+				type="button">Enter</button>
+			<p id="hi-output"></p>
+		</section>
+		<section>
+			<h2>Função tradicional - Par ou ímpar</h2>
+			<label for="isEven">Digite um número: </label>
+			<input
+				id="isEven"
+				type="number">
+			<button
+				id="isEven-btn"
+				type="button">Enter</button>
+			<p id="isEven-output"></p>
+		</section>
+		<section>
+			<h2>Função anônima - Dobro</h2>
+			<label for="double">Digite um valor: </label>
+			<input
+				id="double"
+				type="number">
+			<button
+				id="double-btn"
+				type="button">Enter</button>
+			<p id="double-output"></p>
+		</section>
+		<section>
+			<h2>Arrow function - Soma</h2>
+			<label for="addition-01">Digite o primeiro valor: </label>
+			<input
+				id="addition-01"
+				type="number">
+			<label for="addition-02">Digite o segundo valor: </label>
+			<input
+				id="addition-02"
+				type="number">
+			<button
+				id="addition-btn"
+				type="button">Enter</button>
+			<p id="addition-output"></p>
+		</section>
+	</main>
+
+	<script>
+		// Inputs
+		let nameInput = document.getElementById("name");
+		let ageInput = document.getElementById("age");
+		let isEvenInput = document.getElementById("isEven");
+		let doubleInput = document.getElementById("double");
+		let additionInput01 = document.getElementById("addition-01");
+		let additionInput02 = document.getElementById("addition-02");
+
+		// Botões
+		const hiButton = document.getElementById("hi-btn");
+		const isEvenButton = document.getElementById("isEven-btn");
+		const doubleButton = document.getElementById("double-btn");
+		const additionButton = document.getElementById("addition-btn");
+
+		// Parágrafos
+		const hiElement = document.getElementById("hi-output");
+		const isEvenElement = document.getElementById("isEven-output");
+		const doubleElement = document.getElementById("double-output");
+		const additionElement = document.getElementById("addition-output");
+
+		// Funções tradicionais
+		function hi(name, age) {
+			return `Olá ${name}, você tem ${age} anos!`;
+		}
+
+		function isEven(x) {
+			if (x % 2 === 0) {
+				return true;
+			}
+			return false;
+		}
+
+		// Função anônima
+		const double = function(x) {
+			return x * 2;
+		}
+
+		// Arrow function
+		const addition = (x, y) => x + y;
+
+		hiButton.addEventListener("click", function() {
+			let nameValue = nameInput.value;
+			let ageValue = ageInput.value;
+
+			hiElement.textContent = hi(nameValue, ageValue);
+		});
+
+		isEvenButton.addEventListener("click", function() {
+			let isEvenValue = Number(isEvenInput.value);
+
+			isEvenElement.textContent = `${isEven(isEvenValue) ?
+				`${isEvenValue} é um número Par` :
+				`${isEvenValue} é um número Ímpar`}`;
+		});
+
+		doubleButton.addEventListener("click", function() {
+			let doubleValue = Number(doubleInput.value);
+
+			doubleElement.textContent = `O dobro de ${doubleValue} é `
+				+ `${double(doubleValue)}`;
+		});
+
+		additionButton.addEventListener("click", function() {
+			let additionValue01 = Number(additionInput01.value);
+			let additionValue02 = Number(additionInput02.value);
+
+			additionElement.textContent =
+				`A soma de ${additionValue01} + ${additionValue02} é ` +
+				`${addition(additionValue01, additionValue02)}`;
+		});
+	</script>
+</body>
+</html>
