@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Aula 07 - Arrays</title>
+	<style>
+		h1, h2, li{
+			font-family: monospace;
+		}
+
+		li {
+			padding: 4px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Criando e alterando Arrays</h1>
+	</header>
+	<main>
+		<section>
+			<h2>Frutas</h2>
+			<ul id="fruits-arrays-wrapper">
+
+			</ul>
+		</section>
+		<section>
+			<h2>Valores</h2>
+			<ul id="values-arrays-wrapper">
+
+			</ul>
+		</section>
+	</main>
+
+	<script>
+		const fruitsArraysElement = document.getElementById("fruits-arrays-wrapper");
+		const valuesArraysElement = document.getElementById("values-arrays-wrapper");
+
+		let fruits = ["Maçã", "Uva", "Pêra", "Abacaxi", "Kiwi"];
+		let values = [2, 10, 5, 19, 24, 100, 12, 39, 11, 94];
+
+		function addLi(element, text, array) {
+			const liElement = document.createElement("li");
+			liElement.textContent = `${text}: [ ${array.join(", ")} ]`;
+			element.append(liElement);
+		}
+
+		// Fruits
+		addLi(fruitsArraysElement, "Array original", fruits);
+
+		fruits.push("Maracujá");
+		addLi(fruitsArraysElement, "Array com push(\"Maracujá\")", fruits);
+
+		fruits.pop();
+		addLi(fruitsArraysElement, "Array com pop()", fruits);
+
+		fruits.unshift("Pinha");
+		addLi(fruitsArraysElement, "Array com unshift(\"Pinha\")", fruits);
+
+		fruits.shift();
+		addLi(fruitsArraysElement, "Array com shift()", fruits);
+
+		// Values
+		addLi(valuesArraysElement, "Array original", values);
+
+		let evenValues = values.filter(x => x % 2 === 0);
+		addLi(valuesArraysElement,
+			"Array com filter() para retornar apenas os pares", evenValues);
+
+		let squaredValues = values.map(y => y * y);
+		addLi(valuesArraysElement,
+			"Array com map() para retornar o quadrado de cada elemento", squaredValues);
+
+		let sumValues = values.reduce((acc, cur) => acc + cur, 0);
+		const liElement = document.createElement("li");
+		liElement.textContent =
+			`Array com reduce() para retornar a soma de todos os elementos: [ ${sumValues} ]`;
+		valuesArraysElement.append(liElement);
+
+		values.sort((x, y) => x - y);
+		addLi(valuesArraysElement,
+			"Array com sort() para ordenar os elementos em ordem crescente", values);
+
+		values.reverse();
+		addLi(valuesArraysElement,
+			"Array com reverse() para inverter a ordem dos elementos", values);
+	</script>
+</body>
+</html>
