@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta
+		name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>Aula 08 - Objetos</title>
+	<style>
+		h1, h2, p, li {
+			font-family: monospace;
+		}
+
+		li {
+			padding: 4px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>Criando, acessando e alterando Objetos</h1>
+	</header>
+	<main>
+		<section>
+			<h2>Pessoa:</h2>
+			<p id="person-info"></p>
+		</section>
+		<section>
+			<h2>Carro:</h2>
+			<ul id="car-info">
+			</ul>
+		</section>
+		<section>
+			<h2>Loja:</h2>
+			<ul id="store-info">
+			</ul>
+		</section>
+	</main>
+
+	<script>
+		const personInfoElement = document.getElementById("person-info");
+		const carInfoElement = document.getElementById("car-info");
+		const storeInfoElement = document.getElementById("store-info");
+
+		let person = {
+			name: "Thiago",
+			age: 24,
+			occupation: "Desenvolvedor",
+			introduce: function() {
+				return `Olá, eu me chamo ${this.name}, tenho ${this.age} anos `
+					+ `e trabalho como ${this.occupation}.\n`;
+			}
+		};
+
+		let car = {
+			make: "Porsche",
+			model: "Cayenne Turbo GT",
+			year: "2026",
+			start: function() {
+				return `Carro ligado!`;
+			}
+		};
+
+		let store = {
+			name: "Steam",
+			products: [
+				{name: "Hades", price: 18.49},
+				{name: "Hades II", price: 71.19},
+				{name: "Elden Ring", price: 274.50},
+				{name: "Resident Evil Requiem", price: 299.00},
+			]
+		}
+
+		personInfoElement.textContent = person.introduce();
+
+		for (let i = 0; i < Object.keys(car).length - 1; i++) {
+			const li = document.createElement("li");
+			li.textContent = `${Object.keys(car)[i]}: ${Object.values(car)[i]}`;
+			carInfoElement.append(li);
+		}
+
+		console.log(car.start());
+
+		for (let key in store.products) {
+			const li = document.createElement("li");
+			li.textContent = `Game: ${store.products[key].name} | Preço: R$ `
+				+ `${store.products[key].price.toFixed(2)}\n`;
+			storeInfoElement.append(li);
+		}
+	</script>
+</body>
+</html>
